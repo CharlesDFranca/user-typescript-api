@@ -1,5 +1,6 @@
+import { ok, serverError } from "../helpers";
 import { IController } from "../protocols";
-import { IGetUsersRepository } from "./get-user-protocols";
+import { IGetUsersRepository } from "./get-users-protocols";
 
 export class GetUsersController implements IController {
   public getUserRepository: IGetUsersRepository;
@@ -13,16 +14,11 @@ export class GetUsersController implements IController {
     try {
       const users = await this.getUserRepository.getUser();
 
-      return {
-        statusCode: 200,
-        body: users,
-      };
+      return ok(users)
+
     } catch (error) {
       console.log(error);
-      return {
-        statusCode: 500,
-        body: "Something went wrong",
-      };
+      return serverError()
     }
   }
 }
