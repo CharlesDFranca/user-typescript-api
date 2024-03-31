@@ -1,17 +1,24 @@
-export const ok = (body: any) => ({statusCode: 200, body})
+import { IHttpStatusCode } from './protocols'
 
-export const created = (body: any) => ({statusCode: 201, body})
+export const ok = (body: any) => ({ 
+  statusCode: IHttpStatusCode.OK, 
+  body 
+});
+
+export const created = (body: any) => ({ 
+  statusCode: IHttpStatusCode.BAD_REQUEST, 
+  body });
 
 export const badRequest = (message: string) => {
   return {
-    statusCode: 400, 
-    body: message
-  }
-}
+    statusCode: IHttpStatusCode.BAD_REQUEST,
+    body: message,
+  };
+};
 
 export const serverError = () => {
   return {
-    statusCode: 500,
+    statusCode: IHttpStatusCode.SERVER_ERROR,
     body: "Something went wrong",
-  }
-}
+  };
+};
