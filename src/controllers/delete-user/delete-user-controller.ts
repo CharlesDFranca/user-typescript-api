@@ -1,11 +1,10 @@
 import { User } from "../../models/user";
-import { IHttpRequest, IHttpResponse } from "../protocols";
+import { IController, IHttpRequest, IHttpResponse } from "../protocols";
 import {
-  IDeleteUserController,
   IDeleteUserRepository,
 } from "./delete-user-protocols";
 
-export class DeleteUserController implements IDeleteUserController {
+export class DeleteUserController implements IController {
   deleteUserRepository: IDeleteUserRepository;
 
   constructor(deleteUserRepository: IDeleteUserRepository) {
