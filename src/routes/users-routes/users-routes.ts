@@ -5,7 +5,7 @@ import { MongoCreateUserRepository } from "../../repositories/create-user/mongo-
 import { CreateUserController } from "../../controllers/create-user/create-user-controller";
 import { MongoUpdateUserRepository } from "../../repositories/update-user/mongo-update-user-repository";
 import { UpdateUserController } from "../../controllers/update-user/update-user-controller";
-import { MongoDeleteUserRepository } from "../../repositories/delete-user/mongo-delete-user-repository";
+import { MongoDeleteUserRepository } from "../../repositories/delete-user/mongo-delete-user";
 import { DeleteUserController } from "../../controllers/delete-user/delete-user-controller";
 
 const userRoutes = express.Router();
