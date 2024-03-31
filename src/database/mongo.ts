@@ -10,10 +10,9 @@ export const MongoClient = {
   async connect(): Promise<void> {
     const username = process.env.MONGODB_USER;
     const password = process.env.MONGODB_PASS;
+    const url = process.env.MONGODB_URL || "";
 
-    const url = `mongodb+srv://${username}:${password}@user-typescript-api.yarldv9.mongodb.net/`;
-
-    const client = new Mongo(url);
+    const client = new Mongo(url, { auth: { username, password } });
     const db = client.db("users-db");
 
     this.client = client;

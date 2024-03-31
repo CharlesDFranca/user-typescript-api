@@ -12,10 +12,11 @@ const main = async () => {
   await MongoClient.connect();
 
   app.get("/users", async (req, res) => {
+
     const mongoGetUsersRepository = new MongoGetUsersRepository();
     const getUsersController = new GetUsersController(mongoGetUsersRepository);
 
-    const { statusCode, body } = await getUsersController.handle();
+    const { body, statusCode } = await getUsersController.handle();
 
     res.send(body).status(statusCode);
   });
