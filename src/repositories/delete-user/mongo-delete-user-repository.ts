@@ -3,7 +3,7 @@ import { IDeleteUserRepository } from "../../controllers/delete-user/delete-user
 import { MongoClient } from "../../database/mongo";
 import { User } from "../../models/user";
 
-export class MongoDeleteUser implements IDeleteUserRepository {
+export class MongoDeleteUserRepository implements IDeleteUserRepository {
   async deleteUser(id: string): Promise<User> {
     const user = await MongoClient.db
       .collection<Omit<User, "id">>("users")
