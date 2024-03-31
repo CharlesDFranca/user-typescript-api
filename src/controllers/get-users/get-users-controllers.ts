@@ -17,7 +17,6 @@ export class GetUsersController implements IController {
       return ok(users)
 
     } catch (error) {
-      console.log(error);
       return serverError()
     }
   }

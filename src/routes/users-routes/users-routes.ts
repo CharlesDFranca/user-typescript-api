@@ -1,12 +1,18 @@
 import express from "express";
-import { MongoGetUsersRepository } from "../../repositories/get-users/mongo-get-users";
-import { GetUsersController } from "../../controllers/get-users/get-users-controllers";
-import { MongoCreateUserRepository } from "../../repositories/create-user/mongo-create-user";
-import { CreateUserController } from "../../controllers/create-user/create-user-controller";
-import { MongoUpdateUserRepository } from "../../repositories/update-user/mongo-update-user-repository";
-import { UpdateUserController } from "../../controllers/update-user/update-user-controller";
-import { MongoDeleteUserRepository } from "../../repositories/delete-user/mongo-delete-user";
-import { DeleteUserController } from "../../controllers/delete-user/delete-user-controller";
+import {
+  GetUsersController,
+  GetOneUserController,
+  CreateUserController,
+  UpdateUserController,
+  DeleteUserController,
+} from "../../controllers/";
+import {
+  MongoGetUsersRepository,
+  MongoCreateUserRepository,
+  MongoUpdateUserRepository,
+  MongoDeleteUserRepository,
+  MongoGetOneUserRepository,
+} from "../../repositories";
 
 const userRoutes = express.Router();
 
@@ -15,6 +21,19 @@ userRoutes.get("/", async (req, res) => {
   const getUsersController = new GetUsersController(mongoGetUsersRepository);
 
   const { body, statusCode } = await getUsersController.handle();
+
+  res.status(statusCode).send(body);
+});
+
+userRoutes.get("/:id", async (req, res) => {
+  const mongoGeOnetUsersRepository = new MongoGetOneUserRepository();
+  const getOneUsersController = new GetOneUserController(
+    mongoGeOnetUsersRepository,
+  );
+
+  const { body, statusCode } = await getOneUsersController.handle({
+    params: req.params,
+  });
 
   res.status(statusCode).send(body);
 });
@@ -59,4 +78,4 @@ userRoutes.delete("/:id", async (req, res) => {
   res.status(statusCode).send(body);
 });
 
-export default userRoutes
+export default userRoutes;

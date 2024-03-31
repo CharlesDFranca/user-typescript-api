@@ -4,7 +4,7 @@ import { MongoClient } from "../../database/mongo";
 import { User } from "../../models/user";
 import { MongoUser } from "../mongo-protocols";
 
-export class MongoGetUserRepository implements IGetOneUserRepository {
+export class MongoGetOneUserRepository implements IGetOneUserRepository {
   async getOneUser(id: string): Promise<User> {
 
     const user = await MongoClient.db

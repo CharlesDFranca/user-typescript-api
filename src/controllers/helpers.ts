@@ -6,7 +6,7 @@ export const ok = (body: any) => ({
 });
 
 export const created = (body: any) => ({ 
-  statusCode: IHttpStatusCode.BAD_REQUEST, 
+  statusCode: IHttpStatusCode.CREATED, 
   body });
 
 export const badRequest = (message: string) => {
