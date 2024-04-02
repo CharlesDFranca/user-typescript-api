@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/"
+    "dev": "tsx watch src/",
+    "start": "node build/index.js",
+    "build": "tsc --project tsconfig.json"
   },
   "keywords": [],
   "author": "",
