@@ -1,7 +1,8 @@
 import express from "express";
+import cors from "cors";
 import { config } from "dotenv";
 import { MongoClient } from "./database/mongo";
-import userRoutes from './routes/users-routes/users-routes'
+import userRoutes from "./routes/users-routes/users-routes";
 
 const main = async () => {
   config();
@@ -9,8 +10,9 @@ const main = async () => {
   const app = express();
 
   app.use(express.json());
+  app.use(cors())
 
-  app.use('/users', userRoutes)
+  app.use("/users", userRoutes);
 
   await MongoClient.connect();
 
